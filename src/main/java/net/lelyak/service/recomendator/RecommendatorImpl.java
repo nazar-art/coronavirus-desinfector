@@ -6,6 +6,7 @@ import net.lelyak.model.annotation.Singleton;
 /**
  * @author Nazar Lelyak.
  */
+//@Singleton(lazy = true)
 @Singleton
 //@Deprecated
 public class RecommendatorImpl implements Recommendator {
@@ -21,5 +22,12 @@ public class RecommendatorImpl implements Recommendator {
     @Deprecated
     public void recommend() {
         System.out.println("to protect from covid-2019, drink "+alcohol);
+    }
+
+    @Override
+    public String toString() {
+        return "RecommendatorImpl{" +
+                "alcohol='" + alcohol + '\'' +
+                '}';
     }
 }

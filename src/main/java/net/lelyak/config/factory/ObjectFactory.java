@@ -1,7 +1,7 @@
 package net.lelyak.config.factory;
 
 import lombok.SneakyThrows;
-import net.lelyak.config.application.ApplicationContext;
+import net.lelyak.config.context.ApplicationContext;
 import net.lelyak.config.factory.proxy.ProxyConfigurator;
 import net.lelyak.config.factory.object.ObjectConfigurator;
 
@@ -46,6 +46,7 @@ public class ObjectFactory {
 
     }
 
+    @SuppressWarnings("unchecked")
     private <T> T wrapWithProxyIfNeeded(Class<T> implClass, T t) {
         for (ProxyConfigurator proxyConfigurator : proxyConfigurators) {
             t = (T) proxyConfigurator.replaceWithProxyIfNeeded(t, implClass);

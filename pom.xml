@@ -3,11 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.lelyak</groupId>
-    <artifactId>custom-spring-ioc-demo</artifactId>
+    <artifactId>coronavirus-desinfector</artifactId>
     <packaging>jar</packaging>
 
     <url>http://maven.apache.org</url>
-    <name>custom-spring-ioc-demo</name>
+    <name>coronavirus-desinfector</name>
+    <description>Custom Spring implementation which takes Java config with package to run</description>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>

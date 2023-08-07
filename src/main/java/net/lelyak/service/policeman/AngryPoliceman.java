@@ -6,6 +6,6 @@ package net.lelyak.service.policeman;
 public class AngryPoliceman implements Policeman {
     @Override
     public void makePeopleLeaveRoom() {
-        System.out.println("Всех убью! Вон пошли");
+        System.out.println("Leave the room! Hurry up bastards! Otherwise, I will kick your ass ...");
     }
 }

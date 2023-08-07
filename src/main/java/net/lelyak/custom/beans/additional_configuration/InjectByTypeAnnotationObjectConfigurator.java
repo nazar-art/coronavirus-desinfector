@@ -1,8 +1,8 @@
-package net.lelyak.config.factory.object;
+package net.lelyak.custom.beans.additional_configuration;
 
 import lombok.SneakyThrows;
-import net.lelyak.config.context.ApplicationContext;
-import net.lelyak.model.annotation.InjectByType;
+import net.lelyak.custom.annotation.InjectByType;
+import net.lelyak.custom.context.ApplicationContext;
 
 import java.lang.reflect.Field;
 

@@ -1,4 +1,4 @@
-package net.lelyak.config.factory.proxy;
+package net.lelyak.custom.beans.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 
@@ -19,7 +19,7 @@ public class DeprecatedHandlerProxyConfigurator implements ProxyConfigurator {
 
                 if (proxyForObjectWithoutInterfaces(t, implClass))
                     return Enhancer.create(implClass,
-                        (net.sf.cglib.proxy.InvocationHandler) (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
+                            (net.sf.cglib.proxy.InvocationHandler) (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
 
                 return Proxy.newProxyInstance(implClass.getClassLoader(),
                         implClass.getInterfaces(), (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
@@ -30,7 +30,7 @@ public class DeprecatedHandlerProxyConfigurator implements ProxyConfigurator {
 
             if (proxyForObjectWithoutInterfaces(t, implClass))
                 return Enhancer.create(implClass,
-                    (net.sf.cglib.proxy.InvocationHandler) (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
+                        (net.sf.cglib.proxy.InvocationHandler) (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
 
             return Proxy.newProxyInstance(implClass.getClassLoader(),
                     implClass.getInterfaces(), (proxy, method, args) -> getInvocationHandlerLogic(method, args, t));
@@ -41,14 +41,11 @@ public class DeprecatedHandlerProxyConfigurator implements ProxyConfigurator {
     }
 
     private boolean proxyForObjectWithoutInterfaces(Object t, Class implClass) {
-        if (implClass.getInterfaces().length == 0) {
-            return true;
-        }
-        return false;
+        return implClass.getInterfaces().length == 0;
     }
 
     private Object getInvocationHandlerLogic(Method method, Object[] args, Object t) throws IllegalAccessException, InvocationTargetException {
-        System.out.println("********** What are you doing! This is deprecated!");
+        System.out.println("********** What are you doing! This is deprecated! **********");
         return method.invoke(t, args);
     }
 }

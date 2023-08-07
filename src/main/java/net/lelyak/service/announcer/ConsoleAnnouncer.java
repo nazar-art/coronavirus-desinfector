@@ -1,6 +1,6 @@
 package net.lelyak.service.announcer;
 
-import net.lelyak.model.annotation.InjectByType;
+import net.lelyak.custom.annotation.InjectByType;
 import net.lelyak.service.recomendator.Recommendator;
 
 /**

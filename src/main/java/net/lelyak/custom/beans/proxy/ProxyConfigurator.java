@@ -1,4 +1,4 @@
-package net.lelyak.config.factory.proxy;
+package net.lelyak.custom.beans.proxy;
 
 /**
  * @author Nazar Lelyak.

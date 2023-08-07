@@ -1,4 +1,4 @@
-package net.lelyak.model.annotation;
+package net.lelyak.custom.annotation;
 
 import java.lang.annotation.Retention;
 

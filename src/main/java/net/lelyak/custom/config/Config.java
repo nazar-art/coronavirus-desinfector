@@ -1,4 +1,4 @@
-package net.lelyak.config;
+package net.lelyak.custom.config;
 
 import org.reflections.Reflections;
 

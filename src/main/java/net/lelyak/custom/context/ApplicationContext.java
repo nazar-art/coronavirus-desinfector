@@ -1,10 +1,10 @@
-package net.lelyak.config.context;
+package net.lelyak.custom.context;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.lelyak.config.Config;
-import net.lelyak.model.annotation.Singleton;
-import net.lelyak.config.factory.ObjectFactory;
+import net.lelyak.custom.annotation.Singleton;
+import net.lelyak.custom.beans.factory.ObjectFactory;
+import net.lelyak.custom.config.Config;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,11 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ApplicationContext {
     @Getter
-    private Config config;
+    private final Config config;
+    @Getter
+    private final Map<Class<?>, Object> cache = new ConcurrentHashMap<>();
     @Setter
     private ObjectFactory factory;
-    @Getter
-    private Map<Class, Object> cache = new ConcurrentHashMap<>();
 
     public ApplicationContext(Config config) {
         this.config = config;

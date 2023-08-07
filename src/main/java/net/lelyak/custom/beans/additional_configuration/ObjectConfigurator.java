@@ -1,6 +1,6 @@
-package net.lelyak.config.factory.object;
+package net.lelyak.custom.beans.additional_configuration;
 
-import net.lelyak.config.context.ApplicationContext;
+import net.lelyak.custom.context.ApplicationContext;
 
 /**
  * @author Nazar Lelyak.

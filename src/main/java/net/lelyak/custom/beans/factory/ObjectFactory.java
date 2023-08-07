@@ -1,9 +1,9 @@
-package net.lelyak.config.factory;
+package net.lelyak.custom.beans.factory;
 
 import lombok.SneakyThrows;
-import net.lelyak.config.context.ApplicationContext;
-import net.lelyak.config.factory.proxy.ProxyConfigurator;
-import net.lelyak.config.factory.object.ObjectConfigurator;
+import net.lelyak.custom.beans.additional_configuration.ObjectConfigurator;
+import net.lelyak.custom.beans.proxy.ProxyConfigurator;
+import net.lelyak.custom.context.ApplicationContext;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.InvocationTargetException;
@@ -16,12 +16,12 @@ import java.util.List;
  */
 public class ObjectFactory {
     private final ApplicationContext context;
-    private List<ObjectConfigurator> configurators = new ArrayList<>();
-    private List<ProxyConfigurator> proxyConfigurators = new ArrayList<>();
+    private final List<ObjectConfigurator> configurators = new ArrayList<>();
+    private final List<ProxyConfigurator> proxyConfigurators = new ArrayList<>();
 
     @SneakyThrows
     public ObjectFactory(ApplicationContext context) {
-        this.context= context;
+        this.context = context;
         for (Class<? extends ObjectConfigurator> aClass : context.getConfig().getScanner().getSubTypesOf(ObjectConfigurator.class)) {
             configurators.add(aClass.getDeclaredConstructor().newInstance());
         }
@@ -36,6 +36,7 @@ public class ObjectFactory {
 
         T t = create(implClass);
 
+        // additional configuration for every instance - like set value from property file
         configure(t);
 
         invokeInit(implClass, t);
@@ -43,7 +44,6 @@ public class ObjectFactory {
         t = wrapWithProxyIfNeeded(implClass, t);
 
         return t;
-
     }
 
     @SuppressWarnings("unchecked")
@@ -64,7 +64,7 @@ public class ObjectFactory {
 
     private <T> void configure(T t) {
         configurators
-                .forEach(objectConfigurator -> objectConfigurator.configure(t,context));
+                .forEach(objectConfigurator -> objectConfigurator.configure(t, context));
     }
 
     private <T> T create(Class<T> implClass) throws InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {

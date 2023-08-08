@@ -19,12 +19,9 @@ public class AppDemo {
         // CoronaDesinfector desinfector = ObjectFactory.getInstance().createObject(CoronaDesinfector.class);
 
         ApplicationContext context = Application.run(
-                "net.lelyak"
-                ,
-                // pass which instance should be exactly created - like @Primary, otherwise catch NoUniqueException
+                "net.lelyak",
                 new HashMap<>(Map.of(Policeman.class, PolicemanImpl.class))
 //                new HashMap<>(Map.of(Policeman.class, AngryPoliceman.class))
-//                Collections.emptyMap()
         );
         CoronaDesinfector desinfector = context.getObject(CoronaDesinfector.class);
         desinfector.startDesinfection(new Room());
